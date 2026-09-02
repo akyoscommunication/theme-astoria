@@ -1,9 +1,9 @@
 {
-  "name": "akyos/theme-access-astoria-btp",
+  "name": "akyos/theme-astoria",
   "type": "wordpress-theme",
   "license": "MIT",
-  "description": "Thème parent Access access-astoria-btp (Sage / Acorn / Vite)",
-  "homepage": "https://github.com/akyoscommunication/theme-access-astoria-btp",
+  "description": "Thème parent Access Astoria (Sage / Acorn / Vite)",
+  "homepage": "https://github.com/akyoscommunication/theme-astoria",
   "authors": [
     {
       "name": "Akyos Communication",
@@ -19,8 +19,8 @@
     "access"
   ],
   "support": {
-    "issues": "https://github.com/akyoscommunication/theme-access-astoria-btp/issues",
-    "source": "https://github.com/akyoscommunication/theme-access-astoria-btp"
+    "issues": "https://github.com/akyoscommunication/theme-astoria/issues",
+    "source": "https://github.com/akyoscommunication/theme-astoria"
   },
   "autoload": {
     "psr-4": {
