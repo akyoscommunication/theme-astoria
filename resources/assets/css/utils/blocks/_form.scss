@@ -1,0 +1,105 @@
+.s-form {
+  padding: rem(30) 0;
+  position: relative;
+
+  &::after {
+    content: "";
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    background-color: color(secondary);
+    z-index: -1;
+    width: 100%;
+    height: rem(300);
+  }
+
+  > .container {
+    padding-top: rem(36);
+    display: grid;
+    grid-template-columns: 1fr 2fr 1fr 8fr;
+    grid-template-areas: "blank left blank2 right";
+    grid-gap: rem(20);
+
+    @include lessThan($tablet) {
+      grid-template-columns: 1fr;
+      grid-template-areas: "left" "right";
+    }
+  }
+
+  &-wrapper {
+    &:nth-child(1) {
+      grid-area: left;
+    }
+
+    &:nth-child(2) {
+      grid-area: right;
+      background-color: color(primary);
+      border-radius: rem(24);
+      padding: rem(34) rem(110);
+
+      @include lessThan($tablet) {
+        padding: rem(34);
+      }
+    }
+
+  }
+
+  &-infos {
+    @include flex(column, nowrap, space-between, start);
+
+    margin-top: rem(72);
+    gap: rem(30);
+
+    @include lessThan($tablet) {
+      @include flex(row ,wrap, center, start);
+
+      margin-top: rem(0);
+      gap: rem(20);
+      justify-content: center;
+      text-align: center;
+    }
+
+    a {
+      @include flex(row, nowrap, start, center);
+
+      gap: rem(8);
+    }
+  }
+
+  .c-socials {
+    justify-content: start;
+    padding-top: rem(32);
+
+    @include lessThan($tablet) {
+      justify-content: center;
+    }
+
+    li {
+      .btn {
+        @include flex(row, wrap, center, center);
+
+        background-color: color(secondary);
+        width: rem(24);
+        padding: rem(6) 0;
+        border-radius: 50%;
+
+        svg {
+          height: rem(12);
+          filter: brightness(0) invert(1);
+        }
+
+        &:hover {
+          span {
+            &:first-child {
+              bottom: rem(6);
+            }
+            &:last-child {
+              bottom: rem(6);
+            }
+          }
+        }
+      }
+    }
+  }
+
+}

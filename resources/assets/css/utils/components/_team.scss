@@ -1,0 +1,24 @@
+.c-team {
+  @extend %rounded;
+
+  position: relative;
+
+  &__content {
+    @extend %rounded;
+
+    position: absolute;
+    bottom: rem(20);
+    left: rem(20);
+    background-color: color(primary);
+    color: color(text-primary);
+    width: 90%;
+    margin: 0 auto;
+    text-align: center;
+    padding: rem(10) 0;
+
+    h3 {
+      @extend %fs-26;
+    }
+
+  }
+}

@@ -1,0 +1,57 @@
+.sub-footer {
+  margin: 0 0 rem(80) 0;
+  padding: clamp-calc(30px, 120px) 0 rem(70) 0;
+  background-color: color(secondary);
+  position: relative;
+  overflow-x: clip;
+
+  &::after {
+    content: '';
+    position: absolute;
+    bottom: rem(-80);
+    left: rem(-30);
+    width: 130%;
+    height: 90%;
+    z-index: -1;
+    background-color: color(secondary);
+    border-bottom: rem(15) solid color(primary);
+    transform: rotate(-5deg);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+
+  @include lessThan(laptop) {
+    padding: rem(56) rem(60);
+
+    .c-title {
+      text-align: center;
+      margin: auto;
+    }
+
+    .btn {
+      margin-inline: auto;
+      margin-top: rem(20);
+    }
+  }
+
+  @include lessThan(mobile) {
+    padding: rem(32) rem(16);
+  }
+
+  &-inner {
+    @include flex(row, wrap, space-between, center);
+
+    background-color: color(background_body);
+    padding: rem(81) rem(108);
+    gap: rem(40);
+
+    @include lessThan($tablet) {
+      padding: rem(40) rem(20);
+      gap: rem(20);
+    }
+  }
+
+  .c-title {
+    font-weight: normal;
+  }
+}

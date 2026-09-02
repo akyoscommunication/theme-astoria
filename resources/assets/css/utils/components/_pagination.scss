@@ -1,0 +1,56 @@
+.c-pagination {
+
+  padding: rem(50) 0;
+
+  .screen-reader-text {
+    display: none;
+  }
+
+  .nav-links {
+    @include flex(row, nowrap, center, center);
+
+    gap: rem(8);
+
+    .prev, .next {
+      color: color(background_body);
+      position: relative;
+      margin: 0 rem(10);
+
+      &:before {
+        content: "";
+        background-image: url($assets-path + '/icons/arrow-slider-next.svg');
+        background-size: contain;
+        background-repeat: no-repeat;
+        height: 100%;
+        width: 100%;
+        transition: all 0.3s $cubic-transition;
+        filter: brightness(0) invert(1);
+      }
+    }
+
+    .prev {
+      &:before {
+        background-image: url($assets-path + '/icons/arrow-slider-prev.svg');
+      }
+    }
+
+    .page-numbers {
+      @include flex(row, nowrap, center, center);
+
+      width: rem(40);
+      height: rem(40);
+      transition: all 0.3s $cubic-transition;
+      font-weight: bold;
+
+      &.current {
+        background-color: color(primary);
+        color: color(text-primary);
+      }
+
+      &:not(.current, .prev, .next):hover {
+        background-color: color(secondary);
+        color: color(text-secondary);
+      }
+    }
+  }
+}

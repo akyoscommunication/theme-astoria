@@ -1,0 +1,62 @@
+.s-sidebar {
+  position: fixed;
+  top: rem(-300);
+  bottom: 0;
+  right: rem(58);
+  left: 0;
+  width: fit-content;
+  margin-left: auto;
+  z-index: 99;
+
+  @include lessThan(1322px) {
+    right: rem(15);
+  }
+
+  @include lessThan(mobileXs) {
+    display: none;
+  }
+
+  @media screen and (max-height: 800px) {
+    top: rem(-100);
+  }
+
+
+  &-socials {
+    @include undoListStyles;
+    @include flex(column, nowrap, center, end);
+
+    gap: rem(14);
+    height: 100%;
+
+    li {
+      .btn {
+        @include flex(row, nowrap, center, center);
+
+        width: rem(34);
+        height: rem(34);
+        background-color: color(light);
+        box-shadow: 0px 4px 4px 0px rgba(0, 0, 0, 0.25);
+
+        &--social {
+          border: 0;
+          padding: 0;
+          svg {
+            position: relative;
+            width: rem(14);
+            z-index: 1;
+            transition: color 0.3s $cubic-transition;
+          }
+          &:hover {
+            &:before {
+              background-color: color(dark);
+            }
+
+            svg {
+              color: color(light);
+            }
+          }
+        }
+      }
+    }
+  }
+}

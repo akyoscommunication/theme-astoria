@@ -1,0 +1,92 @@
+.single, .archive {
+
+  &-header {
+    margin: rem(64) auto !important;
+    position: relative;
+
+    @include lessThan($mobile) {
+      margin: rem(32) auto !important;
+    }
+
+    .c-image {
+      @extend %rounded;
+      height: clamp-calc(300px, 440px);
+      position: relative;
+
+      &::before {
+        content: '';
+        position: absolute;
+        top: 0;
+        left: 0;
+        right: 0;
+        bottom: 0;
+        background: linear-gradient(180deg, rgba(0, 0, 0, 0.5) 0%, rgba(0, 0, 0, 0) 100%);
+      }
+    }
+
+    > div {
+      @include verticalCenter();
+      @include horizontalCenter();
+
+      color: color(light);
+      position: absolute;
+      text-align: center;
+      margin-top: rem(-50);
+
+      @include lessThan($mobile) {
+        margin-top: 0;
+        top: rem(80);
+        width: 100%;
+        padding: 0 rem(24);
+      }
+
+    }
+  }
+
+  &-content {
+    background-color: color(secondary);
+    color: color(text-secondary);
+    padding-top: rem(64);
+
+    > .container > p {
+      padding-bottom: rem(24);
+    }
+
+    &__text, &__images {
+      padding-bottom: rem(64);
+    }
+
+    &__images {
+      @include flex(row, wrap, center, stretch);
+
+      gap: rem(20);
+
+      .c-image {
+        @extend %rounded;
+
+        flex: 1;
+        max-height: rem(497);
+        min-width: rem(250);
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: cover;
+        }
+      }
+    }
+
+    &__other-posts {
+      padding-top: rem(64);
+
+      &-header {
+        @include flex(row, nowrap, space-between, center);
+      }
+
+      .btn {
+        margin: rem(32) auto 0 auto;
+      }
+    }
+  }
+
+}

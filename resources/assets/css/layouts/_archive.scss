@@ -1,0 +1,9 @@
+.s-archive {
+  color: color(text-secondary);
+  background-color: color(secondary);
+  padding-top: clamp-calc(40px, 90px);
+
+  @include lessThan($mobileXs) {
+    padding-top: rem(40);
+  }
+}

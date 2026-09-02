@@ -1,0 +1,98 @@
+.s-hero {
+  @include flex(column, nowrap, center, center);
+
+  padding-top: rem(15);
+  padding-bottom: rem(150);
+
+  .container {
+    display: grid;
+    grid-template-columns: 4fr 1fr 7fr;
+    grid-template-areas: "text blank image";
+
+    @include lessThan($mobile) {
+      grid-template-columns: 1fr;
+      grid-template-areas: "text" "image";
+      grid-row-gap: rem(30);
+    }
+  }
+
+  &-content {
+    @include flex(column, nowrap, center, flex-start);
+
+    grid-area: text;
+    gap: rem(32);
+
+    @include lessThan($mobile) {
+      margin-top: rem(30);
+      gap: rem(16);
+    }
+
+    h1 {
+      padding-bottom: rem(24);
+    }
+  }
+
+  &-image {
+    grid-area: image;
+    position: relative;
+
+    .c-image {
+      height: rem(680);
+
+      @include lessThan($mobile) {
+        height: rem(400);
+        img {
+          object-position: top;
+        }
+      }
+    }
+
+    .btn-container {
+      position: absolute;
+      bottom: 0;
+      right: 0;
+      background-color: color(background_body);
+      width: rem(185);
+
+      mask-image: url($assets-path + '/images/mask-button.svg');
+      mask-size: cover;
+      mask-repeat: no-repeat;
+      mask-position: bottom;
+
+      border-top: 20px solid color(background_body);
+      border-left: 20px solid color(background_body);
+
+      .btn {
+        padding-inline: 0;
+      }
+    }
+  }
+}
+
+.s-hero + section {
+  padding: 0 0 rem(70) 0;
+  overflow-x: clip;
+  position: relative;
+  background-color: color(secondary);
+  margin-top: 0;
+
+  &.s-text-image, &.s-text-image-inline {
+    padding-top: rem(64);
+    padding-bottom: rem(100);
+  }
+
+  &::before {
+    content: '';
+    position: absolute;
+    top: rem(-80);
+    left: rem(-30);
+    width: 130%;
+    height: 90%;
+    z-index: -1;
+    background-color: color(secondary);
+    border-top: rem(20) solid color(primary);
+    transform: rotate(3deg);
+    backface-visibility: hidden;
+    transform-style: preserve-3d;
+  }
+}

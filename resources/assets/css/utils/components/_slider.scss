@@ -1,0 +1,32 @@
+.swiper {
+  .swiper-buttons {
+    @include flex(row, nowrap, start, center);
+
+    gap: rem(45);
+    margin-top: rem(36);
+
+    &:has(.swiper-button-lock) {
+      margin-top: 0;
+    }
+
+    .swiper-button-prev, .swiper-button-next {
+      position: initial;
+      width: initial;
+      height: initial;
+      margin-top: initial;
+
+      svg {
+        color: color(light);
+
+        path {
+          stroke: currentColor;
+        }
+      }
+
+      &:after {
+        content: none;
+      }
+    }
+
+  }
+}

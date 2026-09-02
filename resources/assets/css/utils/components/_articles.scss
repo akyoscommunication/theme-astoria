@@ -1,0 +1,19 @@
+.c-articles {
+  @include flex(row, wrap, space-between, start);
+
+  gap: rem(20);
+  margin-top: rem(46);
+  row-gap: rem(40);
+
+  .c-post {
+    flex: 0 0 calc(50% - 10px);
+    @include lessThan($mobile) {
+      flex: 0 0 100%;
+    }
+
+    &-image {
+      width: 100%;
+      position: relative;
+    }
+  }
+}

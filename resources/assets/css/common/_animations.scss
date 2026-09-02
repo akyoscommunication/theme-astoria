@@ -1,0 +1,167 @@
+[animation-mask] {
+  mask-image: linear-gradient(90deg, #fff 33.33%, transparent 66.66%);
+  mask-size: 0 100%;
+  mask-repeat: no-repeat;
+  transition-delay: 0.2s;
+  transition-duration: 3s;
+  transition-timing-function: $cubic-transition;
+  transition-property: mask-size;
+  display: inline-block;
+}
+
+.animation-mask {
+  &--active {
+    mask-size: 300% 100%;
+  }
+}
+
+
+[animation-wipe] {
+  @extend .animation-wipe;
+}
+
+.animation-wipe {
+  mask-image: linear-gradient(0deg, #fff 100%, transparent 100%);
+  mask-size: 300% 0;
+  mask-repeat: no-repeat;
+  mask-position: bottom;
+  transition-delay: 0.2s;
+  transition-duration: 2s;
+  transition-timing-function: $cubic-transition;
+  transition-property: mask-size;
+  &--active {
+    mask-size: 300% 100%;
+  }
+}
+
+[animation-translate="bottom"] {
+  opacity: 0;
+  transform: translateY(100%);
+  transition: opacity 1.5s $cubic-transition, transform 1.5s $cubic-transition;
+}
+
+.animation-translate-bottom {
+  &--active {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+[animation-zoom="out"] {
+  @extend .animation-zoom-out;
+}
+
+.animation-zoom-out {
+  opacity: 0;
+  transform: scale(1.1);
+  transition: all 1.5s $cubic-transition;
+  &--active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+[animation-zoom="in"] {
+  @extend .animation-zoom-in;
+}
+
+.animation-zoom-in {
+  opacity: 0;
+  transform: scale(0.2);
+  transition: all 1.5s $cubic-transition;
+  &--active {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+
+.animation-underline {
+  background-position: 100% 100%;
+  background-size: 0 rem(2);
+  background-image: linear-gradient(color(dark), color(dark));
+  background-repeat: no-repeat;
+  transition: background-size 0.3s $cubic-transition;
+
+  &:hover {
+    background-position: 0 100%;
+    background-size: 100% rem(2);
+  }
+}
+
+[animation-overflow] {
+  @extend .animation-overflow;
+}
+
+.animation-overflow {
+  overflow: hidden;
+  position: relative;
+  display: block;
+  span {
+    @include flex(row, nowrap, center, center);
+
+    transition:  all .4s $cubic-transition;
+    &:first-child {
+      position: relative;
+      transform: translateY(0);
+    }
+    &:last-of-type {
+      left: 50%;
+      top: 50%;
+      transform: translate(-50%, 100%);
+      width: 100%;
+      position: absolute;
+      bottom: rem(-30);
+    }
+  }
+  &:hover {
+    span {
+      &:first-child {
+        transform: translateY(-100%);
+      }
+      &:last-of-type {
+        transform: translate(-50%, -50%);
+      }
+    }
+  }
+}
+
+[animation-overflow-title] {
+  br {
+    display: none;
+  }
+
+  .c-title__item {
+    position: relative;
+    overflow: hidden;
+    display: block;
+
+    span {
+      position: relative;
+      display: block;
+      bottom: -100px;
+      transition: bottom 1s $cubic-transition;
+    }
+
+    //augmente la vitesse de transition pour chaque élément en fonction du nombre de lignes
+    $items: 1 2 3 4 5 6 7 8 9 10;
+
+    @each $item in $items {
+      &:nth-child(#{$item}) {
+        span {
+          transition-delay: 0.1s * $item;
+        }
+      }
+    }
+  }
+}
+
+.animation-overflow-title {
+  &--active {
+    .c-title__item {
+      span {
+        bottom: 0;
+
+      }
+    }
+  }
+}

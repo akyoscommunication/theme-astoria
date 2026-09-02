@@ -1,0 +1,167 @@
+@import "social";
+
+$dropdown-icon: $assets-path + "/icons/dropdown.svg";
+
+.header-wrap {
+  grid-area: header;
+  position: sticky;
+  top: 0;
+  width: 100%;
+  z-index: 999;
+  transition: all 0.3s linear;
+  color: color(text-background_body);
+  background: color(background_body);
+
+  @include lessThan($tablet) {
+    padding: rem(15) 0;
+  }
+
+  &:has(.is-active) {
+
+    background-color: color(secondary);
+
+    .header {
+      &-brand {
+        position: relative;
+        z-index: 999;
+        .c-image {
+          img {
+            filter: brightness(0)invert(1);
+          }
+        }
+      }
+    }
+  }
+
+  .header {
+    @include flex(row, nowrap, space-between, center);
+
+    &-top {
+      padding: rem(15) 0;
+      background-color: color(secondary);
+      @include lessThan($tablet) {
+        display: none;
+      }
+      .c-socials {
+        svg {
+          path {
+            fill: color(primary);
+          }
+        }
+      }
+    }
+
+    &-brand {
+      .c-image {
+        max-width: rem(90);
+      }
+    }
+
+    &-button {
+      text-align: right;
+      .btn {
+        &--menu {
+          margin-left: auto;
+          max-width: rem(141);
+
+          a {
+            padding-bottom: 0 !important;
+            display: block;
+            position: relative;
+            z-index: 1;
+            background-image: none !important;
+            transition: all 0.3s $cubic-transition !important;
+          }
+        }
+      }
+      @include lessThan($tablet) {
+        display: none;
+      }
+    }
+
+    &-nav {
+      &__nav {
+
+        @include lessThan($tablet) {
+          display: none;
+        }
+
+        .menu {
+          @include flex(row, nowrap, flex-end, center);
+          @include undoListStyles;
+
+          gap: rem(61);
+
+          > li {
+            padding: rem(30) 0;
+
+            &:not(&:has(.sub-menu)) {
+              a {
+                @extend .animation-underline;
+              }
+            }
+
+          }
+
+          li {
+            a {
+              @extend %fs-16;
+
+              white-space: nowrap;
+            }
+
+            &:has(.sub-menu) {
+              @include withIcon($dropdown-icon, 'right');
+
+              position: relative;
+            }
+
+            &.current-menu-item {
+              a {
+                background-position: 0 100% !important;
+                background-size: 100% rem(2) !important;
+              }
+            }
+
+          }
+
+
+          &#menu-menu-principal {
+            .sub-menu {
+              @include undoListStyles;
+              @include horizontalCenter();
+
+              background-color: color(secondary);
+              color: color(text-secondary);
+              position: absolute;
+              border-radius: rem(8);
+              height: 0;
+              opacity: 0;
+              padding: rem(20) 0;
+              overflow: hidden;
+              top: 80%;
+              transition: $default-transition;
+
+              li {
+                a {
+                  display: inline-block;
+                  padding: rem(14) rem(40);
+                  transition: $default-transition;
+                  &:hover {
+                    text-shadow: 0 0 0.1px;
+                  }
+                }
+              }
+
+            }
+          }
+
+        }
+      }
+    }
+  }
+
+  &.scrolled {
+    box-shadow: $default-box-shadow;
+  }
+}

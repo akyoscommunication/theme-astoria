@@ -1,0 +1,50 @@
+@import url('https://fonts.googleapis.com/css2?family=Actor&display=swap');
+
+@font-face {
+  font-family: 'PP Mori';
+  src: url($assets-path + '/fonts/PPMori-SemiBold.woff2') format('woff2'),
+  url($assets-path + '/fonts/PPMori-SemiBold.woff') format('woff');
+  font-weight: 600;
+  font-style: normal;
+  font-display: swap;
+}
+
+@font-face {
+  font-family: 'PP Mori';
+  src: url($assets-path + '/fonts/PPMori-Regular.woff2') format('woff2'),
+  url($assets-path + '/fonts/PPMori-Regular.woff') format('woff');
+  font-weight: normal;
+  font-style: normal;
+  font-display: swap;
+}
+
+:root {
+  font-size: $html-font-size;
+  font-family: $font-family;
+}
+
+%fs {
+  &-55 {
+    font-size: clamp-calc(35px, 55px);
+  }
+
+  &-33 {
+    font-size: clamp-calc(24px, 33px);
+  }
+
+  &-26 {
+    font-size: clamp-calc(20px, 26px);
+  }
+
+  &-20 {
+    font-size: clamp-calc(18px, 20px);
+  }
+
+  &-16 {
+    font-size: rem(16);
+  }
+
+  &-13 {
+    font-size: rem(13);
+  }
+}

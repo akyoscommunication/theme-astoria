@@ -1,0 +1,19 @@
+.c-image {
+
+  &[rounded] {
+    @extend %rounded;
+  }
+
+  display: block;
+  > img {
+    height: 100%;
+    width: 100%;
+    object-fit: cover;
+    display: block;
+    transition: transform 0.3s cubic-bezier(0.215, 0.61, 0.355, 1);
+  }
+  &.window {
+    border-top-left-radius: rem(1000);
+    border-top-right-radius: rem(1000);
+  }
+}

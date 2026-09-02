@@ -1,0 +1,29 @@
+.c-socials {
+  @include undoListStyles;
+  @include flex(row, nowrap, end, center);
+
+  gap: rem(14);
+
+  li {
+    .btn {
+      @extend .animation-overflow;
+
+      width: rem(40);
+      border-radius: 0;
+
+      span {
+        &:last-child {
+          @include horizontalCenter();
+        }
+      }
+
+      &:hover {
+        span {
+          svg {
+            filter: brightness(0) invert(1);
+          }
+        }
+      }
+    }
+  }
+}

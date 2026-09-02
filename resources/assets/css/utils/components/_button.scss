@@ -1,0 +1,145 @@
+.btn {
+  padding: rem(10) rem(64);
+  border-radius: rem(50);
+  width: fit-content;
+  text-align: center;
+  position: relative;
+  display: inline-block;
+  font-weight: bold;
+  border: 1px solid color(primary);
+  z-index: 1;
+  overflow: hidden;
+  transition: color 0.3s $cubic-transition;
+
+  &-title {
+    position: relative;
+
+    &__item {
+      transition: 0.7s $cubic-transition;
+
+      &:nth-child(2) {
+        position: absolute;
+        bottom: rem(-30);
+      }
+    }
+  }
+
+  &:hover {
+    .btn-title {
+      &__item {
+        transform: translateY(rem(-30));
+
+        &:nth-child(1) {
+          opacity: 0;
+        }
+      }
+    }
+  }
+
+  &:has(svg):not(.btn--social) {
+    @include flex(row, nowrap, center, center);
+
+    gap: rem(8);
+    min-width: rem(160);
+
+    svg {
+      transition: $default-transition;
+    }
+
+    &:hover {
+      svg {
+        transform: translateX(rem(4));
+      }
+    }
+  }
+
+  &--primary {
+    background-color: color(primary);
+    color: color(text-primary);
+
+    &:hover {
+      color: color(text-primary);
+    }
+  }
+
+  &--dark {
+    background-color: color(dark);
+    color: color(light);
+
+    &::before {
+      background-color: color(dark);
+    }
+
+    &:hover {
+      color: color(dark);
+
+      &::before {
+        background-color: color(background_body);
+      }
+    }
+  }
+
+  &--secondary {
+    border-color: color(secondary);
+    background-color: color(secondary);
+    color: color(text-secondary) !important;
+
+    &:hover {
+      color: color(light) !important;
+      border-color: color(dark);
+    }
+
+    &:before {
+      background-color: color(dark);
+    }
+  }
+
+  &--light {
+    border-color: color(secondary);
+    background-color: color(secondary);
+    color: color(text-secondary) !important;
+
+    &:hover {
+      color: color(light) !important;
+    }
+
+    &:before {
+      background-color: color(primary);
+    }
+  }
+
+  &--social {
+    border: 0;
+    padding: 0;
+    background-color: color(secondary);
+    transition: background-color 0.3s $cubic-transition;
+
+    svg {
+      position: relative;
+      width: rem(19);
+      z-index: 1;
+      transition: color 0.3s $cubic-transition;
+    }
+
+    &:hover {
+
+      &:before {
+        background-color: color(text-background_body);
+      }
+
+      svg {
+        color: color(background_body);
+      }
+    }
+  }
+
+  &--absolute {
+    position: absolute;
+    right: 0;
+    bottom: 0;
+    @include lessThan($mobileXs) {
+      position: static;
+      margin: rem(40) auto 0 auto;
+    }
+  }
+}

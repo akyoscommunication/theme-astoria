@@ -1,0 +1,9 @@
+body {
+  background-color: color(background_body);
+  color: color(text-background_body);
+
+  a:where(:not(.wp-element-button)) {
+    text-decoration: none;
+  }
+
+}

@@ -1,0 +1,159 @@
+.s-text-image-inline {
+  padding: rem(40) 0;
+
+  &.bg-color-secondary {
+    padding-bottom: rem(100);
+  }
+
+  &-row {
+    display: grid;
+    align-items: center;
+    grid-template-columns: repeat(12, 1fr);
+    grid-auto-flow: column;
+
+    &:has(> div:only-child) {
+      grid-template-columns: 1fr;
+    }
+
+    @include lessThan($mobile) {
+      grid-template-columns: 1fr;
+      grid-auto-flow: row;
+      grid-row-gap: rem(60);
+    }
+  }
+
+  &-image {
+    position: relative;
+
+    .clone {
+      @extend %rounded;
+
+      content: '';
+      position: absolute;
+      width: 100%;
+      height: 100%;
+      background-color: color(primary);
+
+      @at-root .reverse & {
+        right: rem(15);
+        bottom: rem(15);
+      }
+
+      @at-root .default & {
+        left: rem(15);
+        bottom: rem(15);
+      }
+    }
+
+    &-0 {
+      margin-top: rem(48);
+      grid-row: 1;
+
+      @include lessThan($mobile) {
+        grid-row: 2;
+      }
+
+      @at-root .reverse & {
+        grid-column: 1 / 6;
+        @include lessThan($mobile) {
+          grid-column: 6 / 13;
+        }
+      }
+
+      @at-root .default & {
+        grid-column: 6 / 11;
+        @include lessThan($mobile) {
+          grid-column: 2 / 9;
+        }
+      }
+
+      .c-image {
+        position: relative;
+        z-index: 1;
+
+        img {
+          max-height: rem(632);
+        }
+      }
+    }
+
+    &-1 {
+
+      @at-root .reverse & {
+        grid-column: 5 / 8;
+        @include lessThan($mobile) {
+          grid-column: 3 / 7;
+        }
+      }
+
+      @at-root .default & {
+        grid-column: 10 / 13;
+        @include lessThan($mobile) {
+          grid-column: 7 / 11;
+        }
+      }
+
+      grid-row: 1;
+      align-self: start;
+
+      @include lessThan($mobile) {
+        grid-row: 2;
+      }
+
+      .clone {
+        z-index: 0;
+      }
+
+      .c-image {
+        position: relative;
+        z-index: 2;
+
+        img {
+          max-height: rem(248);
+        }
+      }
+    }
+
+    .c-image {
+      overflow: visible;
+
+      img {
+        @extend %rounded;
+      }
+    }
+  }
+
+  &-text {
+    @include flex(column, nowrap, start, start);
+
+    @at-root .reverse & {
+      grid-column: 9 / -1;
+      @include lessThan($mobile) {
+        grid-column: 12 / -1;
+      }
+    }
+
+    @at-root .default & {
+      grid-column: 1 / 5;
+      @include lessThan($mobile) {
+        grid-column: 12 / -1;
+      }
+    }
+
+    grid-row: 1;
+
+    @include lessThan($mobile) {
+      grid-column: auto;
+    }
+
+    h3:not(.c-title) {
+      margin-bottom: rem(24);
+      font-family: $font-family;
+    }
+
+    .btn {
+      margin-top: rem(36);
+    }
+  }
+}
+

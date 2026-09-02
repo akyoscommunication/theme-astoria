@@ -1,0 +1,95 @@
+.forminator-ui {
+  .forminator-row {
+    input, textarea {
+      background: transparent !important;
+      border-radius: rem(4) !important;
+      border: rem(1) solid color(text-background_body) !important;
+      padding: rem(16) !important;
+      color: color(text-secondary) !important;
+    }
+
+    .forminator-field {
+      position: relative;
+
+      label {
+        position: absolute;
+        font-size: rem(13) !important;
+        top: rem(-12);
+        left: rem(20);
+        color: color(dark) !important;
+        background: color(primary);
+        padding-inline: rem(4);
+        font-weight: 400 !important;
+      }
+
+      .btn {
+        font-size: rem(16) !important;
+        background: color(secondary) !important;
+        color: color(primary) !important;
+        border-radius: rem(24) !important;
+        padding: rem(10) rem(16) !important;
+        min-width: rem(197) !important;
+        font-weight: 700 !important;
+        transition: 0.4s $cubic-transition !important;
+        position: relative;
+
+        &:before {
+          transform: translateY(101%);
+        }
+
+        &:hover {
+          span {
+            &:after {
+              right: rem(15);
+            }
+          }
+        }
+
+        span {
+          position: relative;
+          padding-right: rem(24);
+          &:after {
+            content: url($assets-path + '/icons/arrow-primary.svg');
+            position: absolute;
+            right: rem(18);
+            top: rem(2);
+            display: inline-block;
+            transition: $default-transition;
+          }
+        }
+
+        &:hover {
+          box-shadow: none !important;
+
+          &:before {
+            transform: translateY(0);
+            background-color: color(secondary) !important;
+          }
+        }
+      }
+    }
+
+    .checkbox-form {
+      .forminator-label {
+        display: none !important;
+      }
+
+      label {
+        position: initial;
+        top: initial;
+        left: initial;
+      }
+
+      .forminator-checkbox__wrapper {
+        align-items: center !important;
+
+        .forminator-checkbox__label {
+          p {
+            font-size: rem(16) !important;
+            margin-top: 0;
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,44 @@
+.s-banner {
+  padding: clamp-calc(40px, 80px) 0;
+
+  &-list {
+    padding-top: rem(64);
+
+    &-wrapper {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(0, 200px));
+      grid-gap: rem(24);
+      justify-content: center;
+
+      @include lessThan($mobileXs) {
+        grid-template-columns: 1fr 1fr;
+      }
+    }
+
+    .slider--banner {
+      margin: 0 rem(40);
+    }
+
+    .c-image {
+      background-color: color(background_body);
+      max-height: rem(192);
+      text-align: center;
+
+      &:hover {
+        img {
+          filter: none;
+        }
+      }
+
+      img {
+        mix-blend-mode: multiply;
+        width: auto;
+        margin: auto;
+        height: 100%;
+        object-fit: contain;
+        transition: all 0.6s $cubic-transition;
+      }
+    }
+
+  }
+}

@@ -1,0 +1,55 @@
+.s-reviews {
+  padding: clamp-calc(40px, 90px) 0;
+
+  &__header {
+    text-align: center;
+  }
+
+  > .container > .c-title,
+  &__header > .c-title {
+    @extend %fs-33;
+
+    margin-inline: auto;
+  }
+
+  &__text {
+    text-align: center;
+    margin-top: rem(30);
+  }
+
+  &__aggregate {
+    justify-content: center;
+  }
+
+  &-list {
+    .slider--reviews {
+      overflow: visible;
+      position: relative;
+      padding-bottom: rem(80);
+
+      .swiper-buttons {
+        @include flex(row, nowrap, end, center);
+
+        gap: rem(32);
+        position: absolute;
+        bottom: rem(15);
+        left: 0;
+        margin-top: 0;
+
+        svg path {
+          stroke: color(dark);
+        }
+      }
+    }
+  }
+
+  &-item {
+    background-color: color(background_body);
+    color: color(dark);
+    border: rem(1) solid rgba(var(--aky-color-dark--rgb, 35, 35, 35), 0.12);
+
+    &__star.is-filled {
+      color: color(dark);
+    }
+  }
+}

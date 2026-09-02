@@ -1,0 +1,39 @@
+.copy-footer {
+  padding-bottom: rem(23);
+
+  > .container {
+    @include flex(row, wrap, space-between, center);
+
+    @include lessThan(tablet) {
+      @include flex(column, nowrap, center, center);
+    }
+
+    .menu {
+      @include flex(row, wrap, space-between, center);
+      @include undoListStyles;
+
+      @include lessThan(tablet) {
+        justify-content: center;
+        gap: 0;
+        column-gap: rem(10);
+      }
+
+      li {
+        @include flex(row, nowrap, center, center);
+
+        &:after {
+          content: "";
+          display: block;
+          width: rem(1);
+          height: rem(10);
+          background-color: color(secondary);
+          margin: 0 rem(8);
+        }
+
+        &:last-child:after {
+          content: none;
+        }
+      }
+    }
+  }
+}

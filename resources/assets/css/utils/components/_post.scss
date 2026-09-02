@@ -1,0 +1,104 @@
+.c-post {
+  @include flex(column, nowrap, start, start);
+
+  gap: rem(20);
+  position: relative;
+
+  &__permalink {
+    position: absolute;
+    inset: 0;
+    z-index: 5;
+  }
+
+  &-image {
+    .c-image {
+      @extend %rounded;
+      height: rem(263);
+
+      &::before {
+        @extend %imageOverlay;
+
+        background-color: rgba(0, 0, 0, 0.5);
+        z-index: 1;
+      }
+
+      img {
+        object-position: center;
+        transform: scale(1.001);
+        transition: transform 0.6s $cubic-transition;
+        @at-root .c-post:hover & {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+
+  &-content {
+    @include flex(column, nowrap, space-between, start);
+
+    gap: rem(12);
+    position: absolute;
+    inset: 0;
+    padding-inline: rem(30);
+    padding-block: rem(15) rem(40);
+    z-index: 2;
+
+    &-header {
+      .c-title {
+        @extend %fs-26;
+        font-family: $font-family;
+        padding-bottom: rem(13);
+      }
+    }
+
+    &-body {
+      &__excerpt {
+        max-width: rem(410);
+        text-overflow: ellipsis;
+        overflow: hidden;
+        display: -webkit-box;
+        -webkit-line-clamp: 3;
+        -webkit-box-orient: vertical;
+      }
+    }
+
+    &__category {
+      @extend %fs-13;
+
+      color: color(dark);
+      background-color: color(light);
+      padding: rem(5);
+    }
+
+    &__button {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: color(secondary);
+
+      mask-image: url($assets-path + '/images/mask-button-post.svg');
+      mask-size: cover;
+      mask-repeat: no-repeat;
+      mask-position: bottom;
+
+      border-top: 20px solid color(secondary);
+      border-left: 20px solid color(secondary);
+
+      .btn--post {
+        @include flex(row, nowrap, center, center);
+
+        border: 0;
+        width: rem(36);
+        height: rem(36);
+        border-radius: 50%;
+        background-color: color(primary);
+        transition: $default-transition;
+        transform: rotate(-45deg);
+
+        @at-root .c-post:hover & {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,90 @@
+.c-card {
+  @extend %rounded;
+
+  flex: 1;
+  position: relative;
+
+  &:not(:has(.c-image)) {
+    height: rem(392);
+    background-color: color(primary);
+  }
+
+  .c-image {
+
+    &::before {
+      @extend %imageOverlay;
+
+      background-color: rgba(0, 0, 0, 0.3);
+      z-index: 1;
+    }
+
+    height: rem(392);
+
+    img {
+      width: 100%;
+      height: 100%;
+      object-fit: cover;
+      transform: scale(1.001);
+      transition: 0.6s $cubic-transition;
+    }
+  }
+
+  &-body {
+    @include flex(column, nowrap, start, start);
+
+    color: color(light);
+    gap: rem(12);
+    padding: rem(0) rem(15) rem(68) rem(20);
+    z-index: 2;
+    position: absolute;
+    bottom: 0;
+    left: 0;
+    width: 100%;
+
+    .c-title {
+      @extend %fs-33;
+      padding-bottom: rem(15);
+    }
+
+    &__button {
+      position: absolute;
+      right: 0;
+      bottom: 0;
+      background-color: color(secondary);
+
+      mask-image: url($assets-path + '/images/mask-button-post.svg');
+      mask-size: cover;
+      mask-repeat: no-repeat;
+      mask-position: bottom;
+
+      border-top: 20px solid color(secondary);
+      border-left: 20px solid color(secondary);
+
+      .btn--post {
+        @include flex(row, nowrap, center, center);
+
+        border: 0;
+        width: rem(36);
+        height: rem(36);
+        border-radius: 50%;
+        background-color: color(primary);
+        transition: $default-transition;
+        transform: rotate(-45deg);
+
+        @at-root .c-card:hover & {
+          transform: rotate(0deg);
+        }
+      }
+    }
+  }
+
+  > a {
+    &:hover {
+      .c-image {
+        img {
+          transform: scale(1.05);
+        }
+      }
+    }
+  }
+}

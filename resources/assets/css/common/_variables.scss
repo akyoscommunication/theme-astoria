@@ -1,0 +1,22 @@
+/** FONTS **/
+$font-family: "Actor", sans-serif;
+$font-family-title: "PP Mori", sans-serif;
+$font-italic: "PP Mori", sans-serif;
+$html-font-size: 16px;
+
+/** RESPONSIVE **/
+$laptop: 1440px;
+$tablet: 1025px;
+$mobile: 768px;
+$mobileXs: 480px;
+
+/** CONTAINER **/
+$container: 1310px;
+$container-sm: 1090px;
+
+$cubic-transition: cubic-bezier(.32, .94, .6, 1);
+
+$default-transition: all .3s $cubic-transition;
+$default-box-shadow: 0 0 10px rgba(0, 0, 0, 0.1);
+
+$assets-path: '/app/themes/akyos-sage/resources/assets';

@@ -1,0 +1,122 @@
+$dropdown-icon-mobile: $assets-path + '/icons/dropdown-icon-mobile.svg';
+
+#burger {
+  display: none;
+  position: relative;
+  height: 50px;
+  z-index: 9;
+  padding: rem(20);
+
+  @include lessThan($tablet) {
+    @include flex(row, nowrap, flex-end, center);
+  }
+
+  span {
+    @include burger(30px, 2px, 7px, var(--aky-color-secondary));
+  }
+}
+
+.header-nav__mobile {
+
+  &.is-active {
+    .mobile-menu {
+      mask-size: 100% 100%;
+      pointer-events: all;
+    }
+
+    #burger {
+      span {
+        @include burger-to-cross(#fff);
+      }
+    }
+  }
+
+  .mobile-menu {
+    position: fixed;
+    right: 0;
+    top: 0;
+    width: 100vw;
+    height: 100%;
+    background-color: color(secondary);
+    color: color(text-secondary);
+    padding: rem(160) 0 rem(131) rem(0);
+
+    mask-image: linear-gradient(-90deg, #fff 100%, transparent 100%);
+    mask-size: 0 300%;
+    mask-repeat: no-repeat;
+    mask-position: right;
+    transition-duration: .5s;
+    transition-timing-function: $cubic-transition;
+    transition-property: mask-size;
+    pointer-events: none;
+
+    .c-socials {
+      justify-content: center;
+      padding-top: rem(100);
+      svg {
+        filter: brightness(0)invert(1);
+      }
+    }
+
+  }
+
+  .menu {
+    @include undoListStyles;
+    @include flex(column, nowrap, flex-start, start);
+
+    gap: rem(51);
+    padding-left: rem(60);
+
+    @include lessThan($mobileXs) {
+      padding-left: rem(20);
+      gap: rem(30);
+    }
+
+    li {
+      &.current-menu-item {
+        a {
+          font-weight: 700;
+        }
+      }
+
+      a {
+        font-size: rem(22);
+      }
+
+      &:has(.sub-menu) {
+        position: relative;
+        overflow: hidden;
+
+        > a {
+          &:after {
+            content: url($dropdown-icon-mobile);
+            margin-left: rem(10);
+          }
+        }
+
+        .sub-menu {
+          @include undoListStyles;
+
+          height: 0;
+
+          li {
+            text-align: right;
+            a {
+              font-size: rem(18);
+              display: inline-block;
+              padding: rem(10) rem(0) rem(5) rem(20);
+            }
+          }
+        }
+      }
+    }
+  }
+}
+
+.scrolled {
+  #burger {
+    span {
+      background-color: color(light);
+    }
+  }
+}

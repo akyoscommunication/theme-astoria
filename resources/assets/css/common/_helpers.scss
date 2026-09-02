@@ -1,0 +1,27 @@
+*[hidden] {
+  display: none !important;
+}
+
+*[hiddenOn="mobile"] {
+  @include lessThan($mobile) {
+    display: none !important;
+  }
+}
+
+*[hiddenOn="tablet"] {
+  @include lessThan($tablet) {
+    display: none !important;
+  }
+}
+
+*[hiddenOn="mobileXs"] {
+  @include lessThan($mobileXs) {
+    display: none !important;
+  }
+}
+
+.text {
+  &-center {
+    text-align: center !important;
+  }
+}

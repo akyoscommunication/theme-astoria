@@ -1,0 +1,121 @@
+.s-text-image {
+  padding: rem(40) 0 clamp-calc(40px, 80px) 0;
+
+  > .container {
+    display: grid;
+    grid-template-columns: 4fr 1fr 7fr;
+    grid-template-areas: "text blank images";
+    grid-gap: rem(20);
+    align-items: center;
+
+    &.reverse {
+      grid-template-columns: 7fr 1fr 4fr;
+      grid-template-areas: "images blank text";
+    }
+
+    @include lessThan($tablet) {
+      @include flex(row, wrap, center, center);
+    }
+
+    .s-text-image-1 {
+      @include flex(row, wrap, start, start);
+
+      grid-area: text;
+
+      h3:not(.c-title) {
+        margin-bottom: rem(24);
+        font-family: $font-family;
+      }
+
+      .btn {
+        margin-top: rem(36);
+      }
+    }
+
+    .s-text-image-2 {
+      grid-area: images;
+      min-width: 0;
+
+      @include lessThan($tablet) {
+        max-width: clamp-calc(500px, 738px);
+      }
+
+      .slider--content {
+        padding-bottom: rem(50);
+        padding-top: rem(20);
+
+        @include lessThan($tablet) {
+          padding: rem(30) 0 rem(60) 0;
+        }
+
+        &::before {
+          @extend %rounded;
+
+          content: "";
+          position: absolute;
+          top: rem(15);
+          left: rem(0);
+          width: 95%;
+          height: 85%;
+          background-color: color(primary);
+          z-index: -1;
+
+          @include lessThan($mobileXs) {
+            content: none;
+          }
+        }
+
+        @at-root .default .slider--content::before {
+          right: rem(0);
+          left: auto !important;
+        }
+
+        .c-image {
+          margin: rem(20);
+          max-width: clamp-calc(350px, 738px);
+          overflow: visible;
+
+          @include lessThan($tablet) {
+            max-width: 95%;
+          }
+
+          img {
+            @extend %rounded;
+
+            height: rem(615);
+
+            @include lessThan($mobile) {
+              height: rem(480);
+            }
+
+            @include lessThan($mobileXs) {
+              height: rem(300);
+            }
+          }
+
+          @at-root .default .c-image {
+            margin-left: auto;
+          }
+          @at-root .reverse .c-image {
+            margin-right: auto;
+          }
+          @include lessThan($tablet) {
+            margin: 0 auto;
+          }
+        }
+
+        .swiper-buttons {
+          position: absolute;
+          bottom: 0;
+          right: 0;
+
+          svg {
+            @at-root .s-text-image:not(.bg-color-secondary) .swiper-buttons svg {
+              filter: brightness(0);
+            }
+          }
+        }
+      }
+    }
+  }
+}

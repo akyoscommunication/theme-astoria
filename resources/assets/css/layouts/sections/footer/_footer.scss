@@ -1,0 +1,125 @@
+@import "sub-footer";
+@import "copy-footer";
+
+
+.footer, .copy-footer {
+  a {
+    @extend .animation-overflow;
+  }
+}
+
+.footer {
+  padding: rem(180) 0 rem(90) 0;
+
+  @include lessThan($mobile) {
+    padding: rem(60) 0;
+  }
+
+  &-columns {
+    display: grid;
+    grid-template-columns: 3fr 2fr 2fr 2fr 3fr;
+    grid-template-areas: "logo blank menu informations horaires";
+
+    @include lessThan($mobile) {
+      grid-template-columns: 6fr 6fr;
+      grid-template-areas:
+                "logo menu"
+                "informations horaires";
+      grid-gap: rem(40);
+      grid-row-gap: rem(70);
+    }
+
+    @include lessThan($mobileXs) {
+      @include flex(column, nowrap, center, center);
+      text-align: center;
+      grid-row-gap: rem(45);
+    }
+
+    &-item {
+      @include flex(column, nowrap, start, start);
+
+      @include lessThan($mobile) {
+        align-items: center !important;
+        text-align: center !important;
+      }
+
+      gap: rem(24);
+
+      .c-image {
+        max-width: rem(90);
+        width: 100%;
+
+        img {
+          width: 100%;
+          height: 100%;
+          object-fit: contain;
+        }
+      }
+
+      .c-title {
+        @extend %fs-20;
+
+        text-transform: uppercase;
+        margin: 0;
+
+      }
+
+      .menu {
+        @include undoListStyles;
+        @include flex(column, nowrap, start, start);
+
+        gap: rem(16);
+
+        @include lessThan($mobile) {
+          align-items: center;
+        }
+      }
+
+      .c-socials {
+        li {
+          .btn {
+            @include flex(row, nowrap, center, center);
+
+
+            background-color: color(secondary);
+            width: rem(24);
+            padding: rem(6) 0;
+            border-radius: 50%;
+            svg {
+              height: rem(12);
+              filter: brightness(0)invert(1);
+            }
+
+            &:hover {
+              span {
+                &:first-child {
+                  bottom: rem(6);
+                }
+                &:last-child {
+                  bottom: rem(6);
+                }
+              }
+            }
+          }
+        }
+      }
+
+      &:nth-child(1) {
+        grid-area: logo;
+      }
+
+      &:nth-child(2) {
+        grid-area: menu;
+      }
+
+      &:nth-child(3) {
+        grid-area: informations;
+      }
+
+      &:nth-child(4) {
+        grid-area: horaires;
+      }
+
+    }
+  }
+}

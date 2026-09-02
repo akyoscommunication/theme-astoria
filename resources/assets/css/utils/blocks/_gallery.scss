@@ -1,0 +1,55 @@
+.s-gallery {
+  padding: clamp-calc(40px, 120px) 0;
+
+  &__text {
+    margin-top: rem(8);
+  }
+
+  &-row {
+    @include flex(row, wrap, start, start);
+    margin-top: rem(32);
+    gap: rem(20);
+
+    > * {
+       flex: 1 0 calc(33% - 20px);
+
+      @include lessThan(mobileXs) {
+        flex: 0 0 calc(50% - 10px);
+      }
+
+      .c-image {
+        @extend %rounded;
+
+        position: relative;
+        max-height: rem(413);
+        height: 100%;
+        cursor: pointer;
+
+        img {
+          transform: scale(1.001);
+          transition: 0.6s $cubic-transition;
+        }
+
+        &:after {
+          content: '';
+          position: absolute;
+          inset: 0;
+          width: 100%;
+          height: 100%;
+          background: rgba(0, 0, 0, 0);
+          transition: background .7s $cubic-transition;
+        }
+
+        &:hover {
+          &:after {
+            background: rgba(0, 0, 0, 0.4);
+          }
+
+          img {
+            transform: scale(1.05);
+          }
+        }
+      }
+    }
+  }
+}

@@ -1,0 +1,46 @@
+.s-numbers {
+  padding: clamp-calc(40px, 90px) 0;
+
+  &__text {
+    text-align: center;
+    margin-top: rem(30);
+  }
+
+  > .container {
+    > .c-title {
+      @extend %fs-33;
+
+      width: fit-content;
+      margin: auto;
+    }
+  }
+
+  &-list {
+    @include flex(row, wrap, center, start);
+
+    margin-top: rem(32);
+    gap: rem(20);
+    color: color(text-primary);
+
+    .c-number {
+      flex: 0 0 calc(33.333% - 20px);
+
+      @include lessThan($tablet) {
+        flex: 0 0 calc(50% - 20px);
+      }
+      @include lessThan($mobile) {
+        flex: 0 0 calc(100% - 20px);
+      }
+    }
+
+    @include lessThan($mobile) {
+      flex-direction: column;
+    }
+
+  }
+
+  .btn {
+    margin-top: rem(32);
+    margin-inline: auto;
+  }
+}

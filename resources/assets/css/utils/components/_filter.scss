@@ -1,0 +1,40 @@
+.c-filter {
+  &-buttons {
+    @include flex(row, nowrap, center, center);
+
+    gap: rem(20);
+
+    @include lessThan($mobile) {
+      flex-direction: column;
+    }
+
+    .btn {
+      @extend %fs-16;
+
+      background-color: color(primary);
+      color: color(text-primary);
+      position: relative;
+      border-radius: rem(50);
+      padding: rem(10) rem(20) !important;
+      font-weight: bold;
+      max-width: fit-content;
+      transition: $default-transition;
+
+      @include moreThan($mobileXs) {
+        padding: rem(9) rem(20) rem(24) rem(20);
+      }
+
+      &:hover {
+        background-color: color(secondary);
+        color: color(primary);
+      }
+
+      &--active {
+        color: color(primary);
+        background-color: color(secondary);
+        font-weight: bold;
+        overflow: visible;
+      }
+    }
+  }
+}

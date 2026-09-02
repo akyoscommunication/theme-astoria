@@ -1,0 +1,19 @@
+.c-number {
+  @include flex(column, nowrap, center, center);
+
+  padding: rem(32) rem(21);
+  text-align: center;
+  color: color(text-secondary);
+
+  &__title {
+    @extend %fs-55;
+  }
+
+  &__text {
+    padding-top: rem(24);
+  }
+
+  img {
+    filter: brightness(0) invert(1);
+  }
+}
